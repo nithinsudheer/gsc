@@ -26,9 +26,9 @@
 </head>
 <body>
 
-<!-- ==========================================================
+<!-- ============================================================
      NAVBAR
-     ========================================================== -->
+     ============================================================ -->
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="navbar-inner">
     <!-- Logo -->
@@ -446,11 +446,12 @@
       <div data-animate data-delay="100">
         <div style="background:var(--color-background);border:1px solid var(--neutral-300);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-xl);">
           <!-- Profile cover -->
-          <div style="height:120px;background:linear-gradient(135deg,var(--primary-100),var(--primary-200));position:relative;"></div>
+          <div style="height:120px;background:linear-gradient(135deg,var(--primary-100),var(--primary-200));position:relative;">
+            <div style="position:absolute;bottom:-28px;left:var(--space-6);width:64px;height:64px;border-radius:50%;border:3px solid var(--color-background);background:var(--primary-700);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#fff;font-family:var(--font-primary);z-index:2;">PS</div>
+          </div>
           <!-- Avatar area -->
-          <div style="padding:0 var(--space-6) var(--space-6);">
-            <div style="display:flex;align-items:flex-end;gap:var(--space-4);margin-top:-32px;margin-bottom:var(--space-5);">
-              <div style="width:64px;height:64px;border-radius:50%;border:3px solid var(--color-background);background:var(--primary-700);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#fff;font-family:var(--font-primary);flex-shrink:0;">PS</div>
+          <div style="padding:0 var(--space-6) var(--space-6);position:relative;z-index:1;">
+            <div style="display:flex;align-items:flex-end;gap:var(--space-4);margin-top:var(--space-2);padding-left:76px;margin-bottom:var(--space-5);min-height:40px;">
               <div style="padding-bottom:4px;">
                 <div style="font-family:var(--font-primary);font-size:17px;font-weight:700;color:var(--color-text);line-height:1.2;">Priya Sharma</div>
                 <div style="font-size:12px;color:var(--primary-700);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;">Beauty &amp; Lifestyle</div>
