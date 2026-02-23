@@ -6,6 +6,9 @@
 (function () {
   'use strict';
 
+  /* ── REPLACE THIS with your deployed Google Apps Script URL ── */
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrYJZ2m2m_ErChFvAa-k1dMa2PP1UZUSr7UtQL1XIY74OmEnv6ZwIZepiL2rdWd0X4RQ/exec';
+
   /* ── DOM Ready ── */
   document.addEventListener('DOMContentLoaded', function () {
     initNavbar();
@@ -33,7 +36,7 @@
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // run once on load
+    onScroll();
   }
 
   /* ============================================================
@@ -49,7 +52,6 @@
       hamburger.setAttribute('aria-expanded', isOpen);
     });
 
-    // Close menu when a link is clicked
     mobileMenu.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         mobileMenu.classList.remove('open');
@@ -103,7 +105,7 @@
   }
 
   /* ============================================================
-     Form Handling — validation + submission
+     Form Handling — validation + Google Sheets submission
      ============================================================ */
   function initForms() {
     var forms = document.querySelectorAll('[data-form]');
@@ -124,18 +126,21 @@
 
     // Loading state
     if (btn) {
-      btn.textContent = 'Submitting…';
+      btn.textContent = 'Submitting...';
       btn.disabled = true;
     }
 
     // Collect form data
     var data = collectFormData(form);
 
-    // Attach UTM params if captured
+    // Attach UTM params
     var utms = getStoredUTMs();
     if (utms) { data = Object.assign(data, utms); }
 
-    // Fire analytics event if GA4 is present
+    // Add timestamp
+    data.timestamp = new Date().toISOString();
+
+    // Fire GA4 event if present
     if (typeof gtag !== 'undefined') {
       gtag('event', 'form_submit', {
         event_category: 'engagement',
@@ -144,22 +149,54 @@
       });
     }
 
-    // Simulate submission (replace with real endpoint / redirect)
-    setTimeout(function () {
-      // Show success inline OR redirect to thank-you
-      var redirect = form.getAttribute('data-redirect');
-
-      if (redirect) {
-        window.location.href = redirect + buildUTMQueryString(data);
+    // Submit to Google Sheets via Apps Script
+    submitToGoogleSheets(data, function (success) {
+      if (success) {
+        var redirect = form.getAttribute('data-redirect');
+        if (redirect) {
+          window.location.href = redirect + buildUTMQueryString(data);
+        } else {
+          var formFields = form.querySelector('[data-form-fields]');
+          if (formFields) formFields.style.display = 'none';
+          if (successMsg) successMsg.classList.add('visible');
+        }
       } else {
-        // Inline success message
-        var formFields = form.querySelector('[data-form-fields]');
-        if (formFields) formFields.style.display = 'none';
-        if (successMsg) successMsg.classList.add('visible');
+        // Re-enable button on failure so user can retry
+        if (btn) {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }
+        alert('Something went wrong. Please try again or email us at hello@getsetcollab.com');
       }
-    }, 800);
+    });
   }
 
+  function submitToGoogleSheets(data, callback) {
+    var params = new URLSearchParams();
+    Object.keys(data).forEach(function (key) {
+      params.append(key, data[key] || '');
+    });
+
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString()
+    })
+    .then(function () {
+      // no-cors means we cannot read the response body
+      // if fetch did not throw, treat as success
+      callback(true);
+    })
+    .catch(function (err) {
+      console.error('Form submission error:', err);
+      callback(false);
+    });
+  }
+
+  /* ============================================================
+     Validation
+     ============================================================ */
   function validateForm(form) {
     var inputs = form.querySelectorAll('[data-required]');
     var valid = true;
@@ -208,7 +245,6 @@
     }
   }
 
-  // Clear error on input change
   document.addEventListener('input', function (e) {
     var input = e.target;
     if (input.classList.contains('error')) {
@@ -224,7 +260,6 @@
   }
 
   function isValidPhone(phone) {
-    // Indian mobile: 10 digits, optionally starting with +91
     var cleaned = phone.replace(/[\s\-\(\)]/g, '');
     return /^(\+91)?[6-9]\d{9}$/.test(cleaned);
   }
@@ -258,7 +293,6 @@
         sessionStorage.setItem('gsc_utms', JSON.stringify(utms));
       } catch (e) {}
 
-      // Attach to all hidden UTM inputs
       document.querySelectorAll('[name^="utm_"]').forEach(function (input) {
         var key = input.getAttribute('name');
         if (utms[key]) input.value = utms[key];
@@ -292,7 +326,6 @@
     if (!targets.length) return;
 
     if (!('IntersectionObserver' in window)) {
-      // Fallback: show all immediately
       targets.forEach(function (el) { el.classList.add('is-visible'); });
       return;
     }
@@ -311,7 +344,6 @@
 
     targets.forEach(function (el) { observer.observe(el); });
 
-    // Inject animation CSS once
     injectAnimationCSS();
   }
 
