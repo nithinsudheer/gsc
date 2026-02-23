@@ -7,7 +7,7 @@
   'use strict';
 
   /* ── REPLACE THIS with your deployed Google Apps Script URL ── */
-  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz7TOfq_F5gAHVSGh0MK6JPzBSd1QfkPkGwdfaq1MT9CSa7TyEPi_9UGT4Yg3-X3oSWbA/exec';
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyyECRUkuUmoAgQfsZlfo0ZS1PU4uXSFN9wV0s9GDnJHztc3VFvTUgrvX9wxYHZl8YE_A/exec';
 
   /* ── DOM Ready ── */
   document.addEventListener('DOMContentLoaded', function () {
@@ -172,16 +172,18 @@
   }
 
   function submitToGoogleSheets(data, callback) {
+    // Build query string and use GET — more reliable than POST
+    // with no-cors from static sites like GitHub Pages
     var params = new URLSearchParams();
     Object.keys(data).forEach(function (key) {
       params.append(key, data[key] || '');
     });
 
-    fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: params.toString()
+    var url = APPS_SCRIPT_URL + '?' + params.toString();
+
+    fetch(url, {
+      method: 'GET',
+      mode: 'no-cors'
     })
     .then(function () {
       // no-cors means we cannot read the response body
