@@ -7,7 +7,7 @@
   'use strict';
 
   /* ── REPLACE THIS with your deployed Google Apps Script URL ── */
-  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrYJZ2m2m_ErChFvAa-k1dMa2PP1UZUSr7UtQL1XIY74OmEnv6ZwIZepiL2rdWd0X4RQ/exec';
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz7TOfq_F5gAHVSGh0MK6JPzBSd1QfkPkGwdfaq1MT9CSa7TyEPi_9UGT4Yg3-X3oSWbA/exec';
 
   /* ── DOM Ready ── */
   document.addEventListener('DOMContentLoaded', function () {
