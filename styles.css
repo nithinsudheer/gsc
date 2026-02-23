@@ -1666,3 +1666,23 @@ h4, .text-h4 {
     flex-wrap: wrap;
   }
 }
+
+/* ============================================================
+   Logo Image — navbar & footer
+   ============================================================ */
+.navbar-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.footer-logo {
+  display: inline-block;
+  margin-bottom: var(--space-4);
+}
+
+.footer-logo-img {
+  height: 28px;
+  width: auto;
+  display: block;
+}

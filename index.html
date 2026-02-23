@@ -13,27 +13,30 @@
   <meta property="og:description" content="The trusted creator marketplace. Set prices. Get discovered. Get paid instantly." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://getsetcollab.com/" />
-  <meta property="og:image" content="assets/images/og-image.jpg" />
+  <meta property="og:image" content="/assets/images/og-image.jpg" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles.css" />
 
   <!-- Lucide Icons (CDN) -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
 <body>
 
-<!-- ==========================================================
+<!-- ============================================================
      NAVBAR
-     ========================================================== -->
+     ============================================================ -->
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="navbar-inner">
     <!-- Logo -->
     <a href="/" class="navbar-logo" aria-label="GetSetCollab home">
-      Get<span>Set</span>Collab!
+      <img src="/assets/images/logo.png" alt="GetSetCollab" class="navbar-logo-img" />
     </a>
 
     <!-- Desktop nav links -->
@@ -44,7 +47,7 @@
 
     <!-- Desktop CTA -->
     <div class="navbar-cta">
-      <a href="brands.html" class="btn btn-ghost btn-sm">For Brands</a>
+      <a href="/brands/" class="btn btn-ghost btn-sm">For Brands</a>
       <a href="#join-form" class="btn btn-primary btn-sm">Join Free as Creator</a>
     </div>
 
@@ -60,7 +63,7 @@
   <div class="mobile-menu" id="mobile-menu" role="menu">
     <a href="#how-it-works" role="menuitem">How It Works</a>
     <a href="#earnings" role="menuitem">Earnings</a>
-    <a href="brands.html" role="menuitem">For Brands</a>
+    <a href="/brands/" role="menuitem">For Brands</a>
     <a href="#join-form" class="btn btn-primary btn-full" role="menuitem" style="margin-top:8px;">Join Free as Creator</a>
   </div>
 </nav>
@@ -113,7 +116,7 @@
       <div class="hero-form-card" id="hero-form" data-animate data-delay="100">
         <p class="hero-form-title">Set Up Your Creator Profile — Free</p>
 
-        <form data-form data-redirect="thank-you.html" novalidate>
+        <form data-form data-redirect="/thank-you/" novalidate>
           <div class="form-stack" data-form-fields>
 
             <div class="form-group">
@@ -647,7 +650,7 @@
         </p>
       </div>
       <div style="flex-shrink:0;">
-        <a href="brands.html" class="btn btn-accent btn-lg">Explore for Brands →</a>
+        <a href="/brands/" class="btn btn-accent btn-lg">Explore for Brands →</a>
       </div>
     </div>
   </div>
@@ -669,7 +672,7 @@
 
     <div class="cta-form-wrapper" data-animate data-delay="100">
       <div class="cta-form-card">
-        <form data-form data-redirect="thank-you.html" novalidate>
+        <form data-form data-redirect="/thank-you/" novalidate>
           <div class="form-stack" data-form-fields>
 
             <div class="form-group">
@@ -746,7 +749,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="/" class="navbar-logo">Get<span>Set</span>Collab</a>
+        <a href="/" class="footer-logo" aria-label="GetSetCollab home"><img src="/assets/images/logo.png" alt="GetSetCollab" class="footer-logo-img" /></a>
         <p>The trusted marketplace connecting brands with verified creators through transparent pricing, secure payments, and instant payouts.</p>
       </div>
 
@@ -763,10 +766,10 @@
       <div>
         <p class="footer-col-title">For Brands</p>
         <div class="footer-links">
-          <a href="brands.html">Brand Overview</a>
-          <a href="brands.html#how-it-works">Hire Creators</a>
-          <a href="brands.html#pricing">Pricing</a>
-          <a href="brands.html#join-form">Get Started</a>
+          <a href="/brands/">Brand Overview</a>
+          <a href="/brands/#how-it-works">Hire Creators</a>
+          <a href="/brands/#pricing">Pricing</a>
+          <a href="/brands/#join-form">Get Started</a>
         </div>
       </div>
 
@@ -795,7 +798,7 @@
 
 
 <!-- Scripts -->
-<script src="script.js"></script>
+<script src="/script.js"></script>
 
 </body>
 </html>
