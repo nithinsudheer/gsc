@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GetSetCollab — Get Paid to Create. On Time. Every Time.</title>
+  <meta name="description" content="Join India's trusted creator marketplace. Set your own prices, get discovered by real brands, and receive instant UPI payouts the moment your work is approved." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://getsetcollab.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="GetSetCollab — Get Paid to Create. On Time. Every Time." />
+  <meta property="og:description" content="India's trusted creator marketplace. Set prices. Get discovered. Get paid via UPI instantly." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://getsetcollab.com/" />
+  <meta property="og:image" content="assets/images/og-image.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Lucide Icons (CDN) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="navbar-inner">
+    <!-- Logo -->
+    <a href="/" class="navbar-logo" aria-label="GetSetCollab home">
+      Get<span>Set</span>Collab
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="navbar-links" role="list">
+      <a href="#how-it-works" role="listitem">How It Works</a>
+      <a href="#for-brands" role="listitem">For Brands</a>
+      <a href="#earnings" role="listitem">Earnings</a>
+    </div>
+
+    <!-- Desktop CTA -->
+    <div class="navbar-cta">
+      <a href="brands.html" class="btn btn-ghost btn-sm">For Brands</a>
+      <a href="#join-form" class="btn btn-primary btn-sm">Join Free as Creator</a>
+    </div>
+
+    <!-- Hamburger -->
+    <button class="navbar-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" role="menu">
+    <a href="#how-it-works" role="menuitem">How It Works</a>
+    <a href="#earnings" role="menuitem">Earnings</a>
+    <a href="#trust" role="menuitem">Payment Protection</a>
+    <a href="brands.html" role="menuitem">For Brands →</a>
+    <a href="#join-form" class="btn btn-primary btn-full" role="menuitem" style="margin-top:8px;">Join Free as Creator</a>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     SECTION 1: HERO + FORM
+     ============================================================ -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- Left: Copy -->
+      <div class="hero-content">
+        <span class="text-overline">India's Creator Marketplace</span>
+        <h1 class="text-display hero-headline">
+          Get Paid to Create.<br />
+          <em>On Time. Every Time.</em>
+        </h1>
+        <p class="hero-subheadline">
+          Join GetSetCollab — India's trusted marketplace for creators. Set your own prices, get discovered by real brands, and receive instant UPI payouts the moment your work is approved.
+        </p>
+        <p class="hero-support">
+          No agencies. No delays. No ghosting. Your payment is secured before you start.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#join-form" class="btn btn-primary btn-lg">Join Free as Creator</a>
+          <a href="#how-it-works" class="btn btn-ghost btn-lg">See How It Works</a>
+        </div>
+
+        <!-- Quick trust signals -->
+        <div style="display:flex;align-items:center;gap:var(--space-5);margin-top:var(--space-8);flex-wrap:wrap;">
+          <span class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" class="trust-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Free to join
+          </span>
+          <span class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" class="trust-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Payment secured
+          </span>
+          <span class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" class="trust-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Instant UPI payouts
+          </span>
+        </div>
+      </div>
+
+      <!-- Right: Form card -->
+      <div class="hero-form-card" id="hero-form" data-animate data-delay="100">
+        <p class="hero-form-title">Set Up Your Creator Profile — Free</p>
+
+        <form data-form data-redirect="thank-you.html" novalidate>
+          <div class="form-stack" data-form-fields>
+
+            <div class="form-group">
+              <label class="form-label" for="hero-name">Full Name</label>
+              <input class="form-input" type="text" id="hero-name" name="name" placeholder="Your name" data-required autocomplete="name" />
+              <span class="form-error" data-error-for="name"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="hero-email">Email Address</label>
+              <input class="form-input" type="email" id="hero-email" name="email" placeholder="your@email.com" data-required autocomplete="email" />
+              <span class="form-error" data-error-for="email"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="hero-platform">Primary Platform</label>
+              <select class="form-select" id="hero-platform" name="platform" data-required>
+                <option value="" disabled selected>Instagram / YouTube / Both</option>
+                <option value="instagram">Instagram</option>
+                <option value="youtube">YouTube</option>
+                <option value="both">Both</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="form-error" data-error-for="platform"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="hero-niche">Your Content Niche</label>
+              <select class="form-select" id="hero-niche" name="niche" data-required>
+                <option value="" disabled selected>Select your niche</option>
+                <option value="beauty">Beauty & Skincare</option>
+                <option value="fashion">Fashion & Lifestyle</option>
+                <option value="food">Food & Cooking</option>
+                <option value="fitness">Fitness & Health</option>
+                <option value="tech">Tech & Gadgets</option>
+                <option value="travel">Travel</option>
+                <option value="finance">Finance & Business</option>
+                <option value="education">Education</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="form-error" data-error-for="niche"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="hero-phone">Mobile Number <span style="color:var(--neutral-500);font-weight:400;">(optional)</span></label>
+              <input class="form-input" type="tel" id="hero-phone" name="phone" placeholder="10-digit mobile number" autocomplete="tel" />
+              <span class="form-error" data-error-for="phone"></span>
+            </div>
+
+            <!-- Hidden UTM fields -->
+            <input type="hidden" name="utm_source" /><input type="hidden" name="utm_medium" />
+            <input type="hidden" name="utm_campaign" /><input type="hidden" name="role" value="creator" />
+
+            <button type="submit" class="btn btn-accent btn-full btn-lg" data-submit-btn style="margin-top:var(--space-2);">
+              Get Early Access as Creator
+            </button>
+
+            <p class="form-microcopy">Free to join. No credit card required. Zero platform fees for creators.</p>
+          </div>
+
+          <div class="form-success-msg">
+            ✅ You're in! We'll reach out shortly with your access details.
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 2: TRUST STRIP
+     ============================================================ -->
+<div class="trust-strip">
+  <div class="container">
+    <div class="trust-strip-inner">
+      <span class="trust-item">
+        <svg class="trust-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Payment Secured Before You Start
+      </span>
+      <span class="trust-item">
+        <svg class="trust-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        KYC-Verified Platform
+      </span>
+      <span class="trust-item">
+        <svg class="trust-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Instant UPI Payouts
+      </span>
+      <span class="trust-item">
+        <svg class="trust-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        GST-Compliant Invoicing
+      </span>
+      <span class="trust-item">
+        <svg class="trust-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        Zero Platform Fees for Creators
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SECTION 3: THE PROBLEM
+     ============================================================ -->
+<section class="section" id="problem">
+  <div class="container">
+    <div class="section-header section-header--center text-center" data-animate>
+      <span class="text-overline">Sound Familiar?</span>
+      <h2>Creating is Hard Enough.<br/>Getting Paid Shouldn't Be.</h2>
+      <p>Every creator in India knows these struggles. We built GetSetCollab to end them.</p>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card" data-animate data-delay="0">
+        <div class="feature-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Brands ghost after delivery</h3>
+        <p class="text-body-sm" style="margin-top:var(--space-3);">You create the content, post it, send the invoice — and then silence. No payment, no response.</p>
+      </div>
+
+      <div class="feature-card" data-animate data-delay="80">
+        <div class="feature-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <h3>30–90 day payment delays</h3>
+        <p class="text-body-sm" style="margin-top:var(--space-3);">Brands keep promising "payment is being processed" while you wait weeks — or months — for money you've already earned.</p>
+      </div>
+
+      <div class="feature-card" data-animate data-delay="160">
+        <div class="feature-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3>Disorganized briefs via DMs</h3>
+        <p class="text-body-sm" style="margin-top:var(--space-3);">Requirements scattered across WhatsApp, Instagram DMs, and emails. No clarity. Endless revisions. No documentation.</p>
+      </div>
+
+      <div class="feature-card" data-animate data-delay="0">
+        <div class="feature-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3>Awkward pricing negotiations</h3>
+        <p class="text-body-sm" style="margin-top:var(--space-3);">Brands undervalue your work, lowball your rates, and expect freebies. No standard, no protection, no backing.</p>
+      </div>
+
+      <div class="feature-card" data-animate data-delay="80">
+        <div class="feature-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Inconsistent brand deals</h3>
+        <p class="text-body-sm" style="margin-top:var(--space-3);">Finding your next collaboration means cold DMs, cold emails, and hoping someone responds. There's no structured discovery.</p>
+      </div>
+
+      <div class="feature-card" data-animate data-delay="160">
+        <div class="feature-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>No professional media kit</h3>
+        <p class="text-body-sm" style="margin-top:var(--space-3);">Every brand asks for stats, portfolio, and rates — and you scramble to put together a PDF or Google Doc every time.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 4: PAYMENT SECURITY (primary creator pain)
+     ============================================================ -->
+<section class="section section--surface" id="trust">
+  <div class="container">
+    <div class="two-col">
+      <!-- Visual side -->
+      <div data-animate>
+        <div style="background:var(--color-background);border:1px solid var(--neutral-300);border-radius:var(--radius-xl);padding:var(--space-8);box-shadow:var(--shadow-lg);">
+          <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-6);">
+            <div style="width:44px;height:44px;background:var(--success-100);border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;color:var(--success-700);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-primary);font-size:15px;font-weight:600;color:var(--color-text);">Payment Protected</div>
+              <div style="font-size:13px;color:var(--success-700);font-weight:500;">Funds secured ✓</div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-4);background:var(--success-100);border-radius:var(--radius-lg);border:1px solid var(--neutral-300);">
+              <span style="font-size:14px;color:var(--neutral-600);">Brand payment collected</span>
+              <span class="badge badge-success">✓ Secured</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-4);background:var(--color-background);border-radius:var(--radius-lg);border:1px solid var(--neutral-300);">
+              <span style="font-size:14px;color:var(--neutral-600);">Content delivered</span>
+              <span class="badge badge-success">✓ Submitted</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-4);background:var(--primary-100);border-radius:var(--radius-lg);border:1px solid var(--primary-200);">
+              <span style="font-size:14px;color:var(--color-text);font-weight:500;">Brand approved → UPI payout</span>
+              <span class="badge badge-accent">⚡ Instant</span>
+            </div>
+          </div>
+
+          <div style="margin-top:var(--space-6);padding-top:var(--space-6);border-top:1px solid var(--neutral-300);text-align:center;">
+            <div style="font-family:var(--font-primary);font-size:28px;font-weight:700;color:var(--color-text);letter-spacing:-0.02em;">₹5,000</div>
+            <div style="font-size:13px;color:var(--success-700);font-weight:500;margin-top:var(--space-1);">Paid to your UPI instantly</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content side -->
+      <div class="two-col-content" data-animate data-delay="100">
+        <span class="text-overline">Payment Protection</span>
+        <h2>Your Payment Is Secured Before You Create a Single Frame</h2>
+        <p class="text-body" style="margin-top:var(--space-4);">
+          When a brand hires you on GetSetCollab, their full payment is collected and held securely by the platform before you begin any work. You can see in your dashboard that the funds are in place — before you start.
+        </p>
+
+        <div class="checklist">
+          <div class="checklist-item">
+            <svg class="checklist-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Brand pays upfront — funds held securely before work starts</span>
+          </div>
+          <div class="checklist-item">
+            <svg class="checklist-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Payment released to your UPI the moment your content is approved</span>
+          </div>
+          <div class="checklist-item">
+            <svg class="checklist-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Dispute resolution team reviews all documented communication fairly</span>
+          </div>
+          <div class="checklist-item">
+            <svg class="checklist-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>No 30-day waits. No invoicing back-and-forth. No ghosting — ever.</span>
+          </div>
+        </div>
+
+        <a href="#join-form" class="btn btn-primary" style="margin-top:var(--space-8);">Join Free — Your Earnings Are Protected</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 5: HOW IT WORKS
+     ============================================================ -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <div class="section-header section-header--center text-center" data-animate>
+      <span class="text-overline">Simple Process</span>
+      <h2>Start Earning in 4 Simple Steps</h2>
+      <p>From profile to payment — the entire creator journey, structured and protected.</p>
+    </div>
+
+    <div class="steps-grid">
+
+      <div class="step-card" data-animate data-delay="0">
+        <div class="step-number">1</div>
+        <h4>Create Your Profile</h4>
+        <p class="text-body-sm">Set up your free creator profile — it works as your media kit. Add your bio, social stats, past work, and the services you offer with your own pricing.</p>
+      </div>
+
+      <div class="step-card" data-animate data-delay="100">
+        <div class="step-number">2</div>
+        <h4>Get Discovered or Apply</h4>
+        <p class="text-body-sm">Brands find you through marketplace search, or browse open campaign briefs and submit proposals to the ones that match your niche.</p>
+      </div>
+
+      <div class="step-card" data-animate data-delay="200">
+        <div class="step-number">3</div>
+        <h4>Create &amp; Deliver</h4>
+        <p class="text-body-sm">Receive a clear brief, discuss details through in-platform chat, create your content, and submit it for review — all organized and timestamped.</p>
+      </div>
+
+      <div class="step-card" data-animate data-delay="300">
+        <div class="step-number">4</div>
+        <h4>Get Paid via UPI</h4>
+        <p class="text-body-sm">When the brand approves your content, payment is released directly to your UPI or bank account — instantly. No waiting, no chasing.</p>
+      </div>
+
+    </div>
+
+    <div class="text-center" style="margin-top:var(--space-12);" data-animate>
+      <a href="#join-form" class="btn btn-primary btn-lg">Set Up Your Profile Free</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 6: YOUR PROFILE = YOUR MEDIA KIT
+     ============================================================ -->
+<section class="section section--surface" id="profile">
+  <div class="container">
+    <div class="two-col">
+      <!-- Content -->
+      <div class="two-col-content" data-animate>
+        <span class="text-overline">Your Media Kit</span>
+        <h2>Look Professional.<br />Get More Brand Deals.</h2>
+        <p class="text-body" style="margin-top:var(--space-4);">
+          Your GetSetCollab profile is more than a listing — it is your professional media kit that brands use to decide if they want to work with you. Everything they need to say yes — in one place.
+        </p>
+
+        <div class="checklist">
+          <div class="checklist-item">
+            <svg class="checklist-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Bio, content niche, and platform stats</span>
+          </div>
+          <div class="checklist-item">
+            <svg class="checklist-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Portfolio of past work and content samples</span>
+          </div>
+          <div class="checklist-item">
+            <svg class="checklist-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Service listings with your own pricing — e.g. "1 Reel for ₹5,000"</span>
+          </div>
+          <div class="checklist-item">
+            <svg class="checklist-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Ratings, reviews, and KYC verification badge</span>
+          </div>
+          <div class="checklist-item">
+            <svg class="checklist-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Response time, availability status, and engagement rate</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mock profile visual -->
+      <div data-animate data-delay="100">
+        <div style="background:var(--color-background);border:1px solid var(--neutral-300);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-xl);">
+          <!-- Profile cover -->
+          <div style="height:120px;background:linear-gradient(135deg,var(--primary-100),var(--primary-200));position:relative;"></div>
+          <!-- Avatar area -->
+          <div style="padding:0 var(--space-6) var(--space-6);">
+            <div style="display:flex;align-items:flex-end;gap:var(--space-4);margin-top:-32px;margin-bottom:var(--space-5);">
+              <div style="width:64px;height:64px;border-radius:50%;border:3px solid var(--color-background);background:var(--primary-700);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;">👤</div>
+              <div style="padding-bottom:4px;">
+                <div style="font-family:var(--font-primary);font-size:17px;font-weight:700;color:var(--color-text);line-height:1.2;">Priya Sharma</div>
+                <div style="font-size:12px;color:var(--primary-700);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;">Beauty &amp; Lifestyle</div>
+              </div>
+              <div style="margin-left:auto;padding-bottom:4px;">
+                <span class="badge badge-success">✓ Verified</span>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);margin-bottom:var(--space-5);padding:var(--space-4);background:var(--color-surface);border-radius:var(--radius-lg);">
+              <div style="text-align:center;">
+                <div style="font-family:var(--font-primary);font-size:18px;font-weight:700;color:var(--color-text);">145K</div>
+                <div style="font-size:11px;color:var(--neutral-500);">Followers</div>
+              </div>
+              <div style="text-align:center;">
+                <div style="font-family:var(--font-primary);font-size:18px;font-weight:700;color:var(--color-text);">5.2%</div>
+                <div style="font-size:11px;color:var(--neutral-500);">Engagement</div>
+              </div>
+              <div style="text-align:center;">
+                <div style="font-family:var(--font-primary);font-size:18px;font-weight:700;color:var(--color-text);">⭐ 4.9</div>
+                <div style="font-size:11px;color:var(--neutral-500);">Rating</div>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-5);">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--space-3) var(--space-4);border:1px solid var(--neutral-300);border-radius:var(--radius-md);">
+                <span style="font-size:14px;color:var(--neutral-600);">Instagram Reel (60s)</span>
+                <span style="font-family:var(--font-primary);font-size:15px;font-weight:700;color:var(--color-text);">₹8,000</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--space-3) var(--space-4);border:1px solid var(--neutral-300);border-radius:var(--radius-md);">
+                <span style="font-size:14px;color:var(--neutral-600);">Story (3 slides)</span>
+                <span style="font-family:var(--font-primary);font-size:15px;font-weight:700;color:var(--color-text);">₹3,000</span>
+              </div>
+            </div>
+
+            <a href="#join-form" class="btn btn-accent btn-full">Hire Priya</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 7: EARNINGS STATS
+     ============================================================ -->
+<section class="section" id="earnings">
+  <div class="container">
+    <div class="section-header section-header--center text-center" data-animate>
+      <span class="text-overline">Real Earnings</span>
+      <h2>What Creators Earn on GetSetCollab</h2>
+      <p>Transparent pricing means brands know what to pay — and you know what you'll receive.</p>
+    </div>
+
+    <div class="stats-row" data-animate>
+      <div class="stat-item">
+        <div class="stat-value">₹<em>5K</em>+</div>
+        <div class="stat-label">Average reel rate for micro creators</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value"><em>0%</em></div>
+        <div class="stat-label">Platform fee charged to creators</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value"><em>Instant</em></div>
+        <div class="stat-label">UPI payout on content approval</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value"><em>100%</em></div>
+        <div class="stat-label">Payment secured before you start</div>
+      </div>
+    </div>
+
+    <!-- Niche opportunity grid -->
+    <div class="features-grid" data-animate>
+      <div class="feature-card">
+        <span class="text-overline">Beauty &amp; Skincare</span>
+        <h4>₹3,000 – ₹25,000</h4>
+        <p class="text-body-sm" style="margin-top:var(--space-2);">Per reel collaboration with D2C beauty brands</p>
+      </div>
+      <div class="feature-card">
+        <span class="text-overline">Food &amp; Cooking</span>
+        <h4>₹2,000 – ₹15,000</h4>
+        <p class="text-body-sm" style="margin-top:var(--space-2);">Per post for food delivery, FMCG &amp; restaurant brands</p>
+      </div>
+      <div class="feature-card">
+        <span class="text-overline">Tech &amp; Gadgets</span>
+        <h4>₹5,000 – ₹50,000</h4>
+        <p class="text-body-sm" style="margin-top:var(--space-2);">Per YouTube review or unboxing video</p>
+      </div>
+      <div class="feature-card">
+        <span class="text-overline">Fitness &amp; Health</span>
+        <h4>₹2,500 – ₹20,000</h4>
+        <p class="text-body-sm" style="margin-top:var(--space-2);">Per reel for supplements, apparel &amp; health brands</p>
+      </div>
+      <div class="feature-card">
+        <span class="text-overline">Fashion &amp; Lifestyle</span>
+        <h4>₹4,000 – ₹30,000</h4>
+        <p class="text-body-sm" style="margin-top:var(--space-2);">Per post for fashion, accessories &amp; lifestyle brands</p>
+      </div>
+      <div class="feature-card">
+        <span class="text-overline">Finance &amp; Business</span>
+        <h4>₹8,000 – ₹60,000</h4>
+        <p class="text-body-sm" style="margin-top:var(--space-2);">Per video for fintech, investment &amp; business brands</p>
+      </div>
+    </div>
+
+    <div class="text-center" style="margin-top:var(--space-12);" data-animate>
+      <p class="text-caption" style="margin-bottom:var(--space-4);">Rates shown are indicative range across creator tiers. You set your own prices.</p>
+      <a href="#join-form" class="btn btn-primary btn-lg">Start Earning — Join Free</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 8: INDIA-FIRST FEATURES
+     ============================================================ -->
+<section class="section section--surface" id="features">
+  <div class="container">
+    <div class="section-header section-header--center text-center" data-animate>
+      <span class="text-overline">Built for India</span>
+      <h2>Everything Designed for Indian Creators</h2>
+      <p>No other platform combines these features for the Indian creator economy.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card" data-animate data-delay="0">
+        <div class="feature-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Instant UPI Payouts</h3>
+        <p class="text-body-sm" style="margin-top:var(--space-3);">Get paid directly to your UPI or bank account the moment your content is approved. No 30-day wait, no NEFT delays.</p>
+      </div>
+
+      <div class="feature-card" data-animate data-delay="80">
+        <div class="feature-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>KYC Verification Badge</h3>
+        <p class="text-body-sm" style="margin-top:var(--space-3);">Verify through Aadhaar/PAN and earn a trusted "Verified Creator" badge that gives brands the confidence to hire you.</p>
+      </div>
+
+      <div class="feature-card" data-animate data-delay="160">
+        <div class="feature-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h3>GST-Compliant Invoicing</h3>
+        <p class="text-body-sm" style="margin-top:var(--space-3);">Every collaboration generates a proper GST-compliant invoice automatically — for both you and the brand. No manual paperwork.</p>
+      </div>
+
+      <div class="feature-card" data-animate data-delay="0">
+        <div class="feature-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3>In-Platform Collaboration</h3>
+        <p class="text-body-sm" style="margin-top:var(--space-3);">All communication, briefs, revisions, and deliveries happen inside GetSetCollab — documented and timestamped. No WhatsApp chaos.</p>
+      </div>
+
+      <div class="feature-card" data-animate data-delay="80">
+        <div class="feature-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Ratings &amp; Reputation</h3>
+        <p class="text-body-sm" style="margin-top:var(--space-3);">Build your reputation through verified reviews from every brand you work with. Your track record becomes your biggest competitive edge.</p>
+      </div>
+
+      <div class="feature-card" data-animate data-delay="160">
+        <div class="feature-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg>
+        </div>
+        <h3>Direct Brand Discovery</h3>
+        <p class="text-body-sm" style="margin-top:var(--space-3);">Brands across India search and find creators like you by niche, platform, location, and language — no cold DMs needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 9: FOR BRANDS CALLOUT
+     ============================================================ -->
+<section class="section" id="for-brands">
+  <div class="container">
+    <div style="background:var(--neutral-900);border-radius:var(--radius-2xl);padding:var(--space-16) var(--space-12);display:grid;grid-template-columns:1fr auto;gap:var(--space-10);align-items:center;" data-animate>
+      <div>
+        <span class="text-overline" style="color:var(--primary-200);">For Brands</span>
+        <h2 style="color:var(--color-background);margin-top:var(--space-2);">Are You a Brand Looking to Hire Creators?</h2>
+        <p style="color:var(--neutral-400);font-size:16px;margin-top:var(--space-4);max-width:480px;line-height:1.6;">
+          GetSetCollab connects you with KYC-verified creators at upfront transparent pricing. Pay only after you approve the content. No agencies, no hidden fees.
+        </p>
+      </div>
+      <div style="flex-shrink:0;">
+        <a href="brands.html" class="btn btn-accent btn-lg">Explore for Brands →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 10: FINAL CTA + FORM (repeated)
+     ============================================================ -->
+<section class="cta-section" id="join-form">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:var(--space-10);" data-animate>
+      <span class="text-overline" style="color:var(--primary-200);">Join the Marketplace</span>
+      <h2 style="color:var(--color-background);">Ready to Get Paid for Your Content?</h2>
+      <p style="color:var(--neutral-400);font-size:18px;margin-top:var(--space-4);">
+        Join GetSetCollab free. Set your prices. Get discovered. Get paid instantly via UPI.
+      </p>
+    </div>
+
+    <div class="cta-form-wrapper" data-animate data-delay="100">
+      <div class="cta-form-card">
+        <form data-form data-redirect="thank-you.html" novalidate>
+          <div class="form-stack" data-form-fields>
+
+            <div class="form-group">
+              <label class="form-label" for="cta-name" style="color:var(--neutral-300);">Full Name</label>
+              <input class="form-input" type="text" id="cta-name" name="name" placeholder="Your name" data-required autocomplete="name" />
+              <span class="form-error" data-error-for="name"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="cta-email" style="color:var(--neutral-300);">Email Address</label>
+              <input class="form-input" type="email" id="cta-email" name="email" placeholder="your@email.com" data-required autocomplete="email" />
+              <span class="form-error" data-error-for="email"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="cta-platform" style="color:var(--neutral-300);">Primary Platform</label>
+              <select class="form-select" id="cta-platform" name="platform" data-required>
+                <option value="" disabled selected>Instagram / YouTube / Both</option>
+                <option value="instagram">Instagram</option>
+                <option value="youtube">YouTube</option>
+                <option value="both">Both</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="form-error" data-error-for="platform"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="cta-niche" style="color:var(--neutral-300);">Your Content Niche</label>
+              <select class="form-select" id="cta-niche" name="niche" data-required>
+                <option value="" disabled selected>Select your niche</option>
+                <option value="beauty">Beauty &amp; Skincare</option>
+                <option value="fashion">Fashion &amp; Lifestyle</option>
+                <option value="food">Food &amp; Cooking</option>
+                <option value="fitness">Fitness &amp; Health</option>
+                <option value="tech">Tech &amp; Gadgets</option>
+                <option value="travel">Travel</option>
+                <option value="finance">Finance &amp; Business</option>
+                <option value="education">Education</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="form-error" data-error-for="niche"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="cta-phone" style="color:var(--neutral-300);">Mobile Number <span style="color:var(--neutral-600);font-weight:400;">(optional)</span></label>
+              <input class="form-input" type="tel" id="cta-phone" name="phone" placeholder="10-digit mobile number" autocomplete="tel" />
+              <span class="form-error" data-error-for="phone"></span>
+            </div>
+
+            <input type="hidden" name="role" value="creator" />
+
+            <button type="submit" class="btn btn-accent btn-full btn-lg" data-submit-btn style="margin-top:var(--space-2);">
+              Get Early Access as Creator
+            </button>
+
+            <p class="form-microcopy" style="color:var(--neutral-500);">Free to join. No credit card. Zero fees for creators.</p>
+          </div>
+
+          <div class="form-success-msg">
+            ✅ You're in! Check your inbox — we'll send your access details soon.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="navbar-logo">Get<span>Set</span>Collab</a>
+        <p>India's trusted marketplace connecting brands with KYC-verified creators through transparent pricing, secure payments, and instant UPI payouts.</p>
+        <div class="footer-social" style="margin-top:var(--space-5);">
+          <a href="#" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter / X">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <p class="footer-col-title">For Creators</p>
+        <div class="footer-links">
+          <a href="#how-it-works">How It Works</a>
+          <a href="#trust">Payment Protection</a>
+          <a href="#earnings">Earnings</a>
+          <a href="#profile">Your Media Kit</a>
+          <a href="#join-form">Join Free</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="footer-col-title">For Brands</p>
+        <div class="footer-links">
+          <a href="brands.html">Brand Overview</a>
+          <a href="brands.html#how-it-works">Hire Creators</a>
+          <a href="brands.html#pricing">Pricing</a>
+          <a href="brands.html#join-form">Get Started</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Company</p>
+        <div class="footer-links">
+          <a href="mailto:hello@getsetcollab.com">Contact Us</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 GetSetCollab. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+      </div>
+      <p class="footer-copyright">hello@getsetcollab.com</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     MOBILE STICKY CTA BAR
+     ============================================================ -->
+<div class="mobile-cta-bar" id="mobile-cta-bar" aria-hidden="true">
+  <a href="#join-form" class="btn btn-accent btn-full">Get Early Access as Creator</a>
+</div>
+
+
+<!-- Scripts -->
+<script src="script.js"></script>
+
+</body>
+</html>
