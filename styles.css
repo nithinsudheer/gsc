@@ -1686,3 +1686,58 @@ h4, .text-h4 {
   width: auto;
   display: block;
 }
+
+/* ============================================================
+   Navbar — hide nav links on desktop, show only on mobile
+   ============================================================ */
+.navbar-links {
+  display: none;
+}
+
+/* Show nav links in mobile menu (already handled by .mobile-menu) */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none; /* still hidden — mobile uses .mobile-menu instead */
+  }
+}
+
+/* ============================================================
+   Navbar logo — image + text side by side
+   ============================================================ */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-logo-img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+/* ============================================================
+   Footer logo — image + text side by side
+   ============================================================ */
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+}
+
+.footer-logo span {
+  color: var(--primary-700);
+}
+
+.footer-logo-img {
+  height: 24px;
+  width: auto;
+  display: block;
+}
