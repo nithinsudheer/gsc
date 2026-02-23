@@ -668,6 +668,9 @@ h4, .text-h4 {
   color: var(--color-text);
   text-decoration: none;
   letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0;
 }
 
 .navbar-logo span {
@@ -675,7 +678,9 @@ h4, .text-h4 {
 }
 
 .navbar-links {
-  display: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
 }
 
 .navbar-links a {
@@ -1513,6 +1518,10 @@ h4, .text-h4 {
 @media (max-width: 1024px) {
   :root { --section-py: 64px; }
 
+  .navbar-links {
+    display: none;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     gap: var(--space-12);
@@ -1538,6 +1547,20 @@ h4, .text-h4 {
   .testimonials-grid { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .two-col { grid-template-columns: 1fr; }
+
+  .two-col-content {
+    text-align: center;
+  }
+
+  .two-col-content .btn {
+    display: inline-flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .two-col-content .checklist-item {
+    text-align: left;
+  }
 
   .footer-grid {
     grid-template-columns: 1fr 1fr;
@@ -1579,6 +1602,20 @@ h4, .text-h4 {
   .testimonials-grid { grid-template-columns: 1fr; max-width: 100%; }
   .stats-row { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
   .two-col { grid-template-columns: 1fr; }
+
+  .two-col-content {
+    text-align: center;
+  }
+
+  .two-col-content .btn {
+    display: inline-flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .two-col-content .checklist-item {
+    text-align: left;
+  }
 
   .trust-strip-inner { gap: var(--space-5); }
   .trust-item { font-size: 13px; }
@@ -1690,16 +1727,11 @@ h4, .text-h4 {
 /* ============================================================
    Navbar logo — image + text side by side
    ============================================================ */
-.navbar-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
 .navbar-logo-img {
   height: 28px;
   width: auto;
   display: block;
+  margin-right: 8px;
 }
 
 /* ============================================================
@@ -1708,7 +1740,7 @@ h4, .text-h4 {
 .footer-logo {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 0;
   font-family: var(--font-primary);
   font-size: 20px;
   font-weight: 700;
@@ -1726,4 +1758,5 @@ h4, .text-h4 {
   height: 24px;
   width: auto;
   display: block;
+  margin-right: 8px;
 }
