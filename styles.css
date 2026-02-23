@@ -875,6 +875,10 @@ h4, .text-h4 {
   position: relative;
 }
 
+.steps-grid-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
 .steps-grid::before {
   content: '';
   position: absolute;
@@ -1524,6 +1528,10 @@ h4, .text-h4 {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .steps-grid-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .steps-grid::before { display: none; }
 
   .features-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1556,9 +1564,17 @@ h4, .text-h4 {
   .hero-content { text-align: center; }
   .hero-actions { justify-content: center; }
 
+  /* Fix hero trust items centering on mobile */
+  .hero-content > div[style*="display:flex"] {
+    justify-content: center;
+  }
+
   .hero-form-card { padding: var(--space-6); }
 
   .steps-grid { grid-template-columns: 1fr; }
+  .steps-grid[style*="grid-template-columns:repeat(5"] {
+    grid-template-columns: 1fr !important;
+  }
   .features-grid { grid-template-columns: 1fr; }
   .creator-grid { grid-template-columns: 1fr; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
@@ -1580,4 +1596,73 @@ h4, .text-h4 {
   .section-header { margin-bottom: var(--space-10); }
 
   .cta-form-card { padding: var(--space-6); }
+
+  /* Fix For Brands / For Creators callout sections on mobile */
+  [style*="grid-template-columns:1fr auto"] {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+    padding: var(--space-10) var(--space-6) !important;
+  }
+
+  [style*="grid-template-columns:1fr auto"] > div[style*="flex-shrink:0"] {
+    justify-self: center;
+  }
+
+  /* Fix hero grid on mobile */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .hero-form-card {
+    max-width: 100%;
+  }
+
+  /* Ensure stat values don't overflow */
+  .stat-value {
+    font-size: 28px;
+  }
+
+  /* Pricing card featured overflow fix */
+  .pricing-card.featured {
+    margin-top: var(--space-6);
+  }
+}
+
+/* ============================================================
+   Responsive — Small phones (≤ 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .trust-strip-inner {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+    padding: 0 var(--space-4);
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .stat-value {
+    font-size: 24px;
+  }
+
+  .creator-card-stats {
+    flex-wrap: wrap;
+  }
 }
