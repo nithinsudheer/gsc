@@ -675,9 +675,7 @@ h4, .text-h4 {
 }
 
 .navbar-links {
-  display: flex;
-  align-items: center;
-  gap: var(--space-8);
+  display: none;
 }
 
 .navbar-links a {
@@ -1687,19 +1685,7 @@ h4, .text-h4 {
   display: block;
 }
 
-/* ============================================================
-   Navbar — hide nav links on desktop, show only on mobile
-   ============================================================ */
-.navbar-links {
-  display: none;
-}
 
-/* Show nav links in mobile menu (already handled by .mobile-menu) */
-@media (max-width: 768px) {
-  .navbar-links {
-    display: none; /* still hidden — mobile uses .mobile-menu instead */
-  }
-}
 
 /* ============================================================
    Navbar logo — image + text side by side
