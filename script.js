@@ -249,6 +249,17 @@
 
   document.addEventListener('input', function (e) {
     var input = e.target;
+
+    /* Strip non-digits from phone fields in real time */
+    if (input.classList.contains('phone-input')) {
+      var pos = input.selectionStart;
+      var cleaned = input.value.replace(/\D/g, '').slice(0, 10);
+      if (input.value !== cleaned) {
+        input.value = cleaned;
+        try { input.setSelectionRange(pos - 1, pos - 1); } catch (err) {}
+      }
+    }
+
     if (input.classList.contains('error')) {
       var form = input.closest('[data-form]');
       if (!form) return;
@@ -361,3 +372,16 @@
   }
 
 })();
+/* ── Niche accordion toggle (mobile) ── */
+function toggleNiches() {
+  const hiddenCards = document.querySelectorAll('.niche-card--hidden');
+  const btn = document.getElementById('niche-toggle-btn');
+  const isExpanded = btn.getAttribute('data-expanded') === 'true';
+
+  hiddenCards.forEach(card => {
+    card.classList.toggle('visible', !isExpanded);
+  });
+
+  btn.setAttribute('data-expanded', !isExpanded);
+  btn.textContent = isExpanded ? 'See all 6 niches ▾' : 'Show less ▴';
+}
