@@ -2339,3 +2339,199 @@ h4, .text-h4 {
 .phone-input-wrapper:has(.form-input.error) .phone-prefix {
   border-color: var(--danger-700);
 }
+
+/* ============================================================
+   MOBILE RESPONSIVENESS FIXES — March 2026
+   Ensures full centre-alignment and readable layout on mobile
+   ============================================================ */
+
+/* ── 768px and below ── */
+@media (max-width: 768px) {
+
+  /* Section headers — reduce bottom spacing */
+  .section-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .section-header p {
+    font-size: 16px;
+  }
+
+  /* Step cards — centre everything */
+  .step-card {
+    text-align: center;
+    align-items: center;
+  }
+
+  /* Remove horizontal connector line between steps on mobile */
+  .steps-grid::before {
+    display: none;
+  }
+
+  /* Feature cards — centre icon, heading, body */
+  .feature-card {
+    text-align: center;
+    align-items: center;
+  }
+
+  /* Niche cards — centre content */
+  .niche-card {
+    text-align: center;
+  }
+
+  /* Creator cards — centre stats row */
+  .creator-card-stats {
+    justify-content: center;
+  }
+
+  /* Trust badges in payment section — centre on mobile */
+  .trust-badges {
+    justify-content: center;
+  }
+
+  /* Two-col content — make sure btn is centred */
+  .two-col-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Keep checklist items left-aligned inside centred container */
+  .checklist {
+    align-self: stretch;
+  }
+
+  .checklist-item {
+    text-align: left;
+  }
+
+  /* Stats row — centre each item text */
+  .stat-item {
+    text-align: center;
+  }
+
+  /* Trust strip — fully centred on mobile */
+  .trust-strip-inner {
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Product mockup collab cards — allow wrapping on small screens */
+  .app-collab-card {
+    flex-wrap: wrap;
+  }
+
+  /* Section header in two-col sections — ensure centre */
+  .section-header--center {
+    text-align: center;
+  }
+
+  /* Industry strip stats — already column on mobile, ensure centred */
+  .industry-stat span {
+    max-width: 100%;
+  }
+
+  /* Footer social links — centre on mobile */
+  .footer-social-links {
+    justify-content: flex-start;
+  }
+
+  /* Mobile CTA bar — full width button */
+  .mobile-cta-bar .btn {
+    width: 100%;
+  }
+
+  /* Form urgency bar — ensure wrap on narrow screens */
+  .form-urgency-bar {
+    font-size: 12px;
+  }
+
+  /* Hero support line — smaller on mobile */
+  .hero-support {
+    font-size: 14px;
+  }
+
+  /* Hero subheadline — tighten on mobile */
+  .hero-subheadline {
+    font-size: 17px;
+  }
+
+  /* Stat value — prevent overflow */
+  .stat-value {
+    word-break: break-word;
+  }
+}
+
+/* ── 480px and below ── */
+@media (max-width: 480px) {
+
+  /* Trust strip — single column centred */
+  .trust-strip-inner {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: center;
+  }
+
+  /* Section header — tighter margins */
+  .section-header {
+    margin-bottom: var(--space-6);
+  }
+
+  .section-header p {
+    font-size: 15px;
+  }
+
+  /* Step cards — tighten gap */
+  .step-card {
+    gap: var(--space-3);
+  }
+
+  /* Feature card icon — auto-margin to centre on mobile */
+  .feature-card-icon {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Hero headline — scale down on very small screens */
+  .hero-headline {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+
+  /* Stats row — full 1-col, well spaced */
+  .stats-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    padding: var(--space-8) 0;
+  }
+
+  /* Product mockup app stats — 1 column */
+  .app-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Niche accordion toggle — larger touch target */
+  .niche-accordion-toggle .btn {
+    width: 100%;
+  }
+
+  /* Phone input wrapper — ensure prefix doesn't shrink too small */
+  .phone-prefix {
+    font-size: 13px;
+    padding: 0 10px;
+  }
+
+  /* CTA form card — tighter padding on very small screens */
+  .cta-form-card {
+    padding: var(--space-5);
+  }
+
+  /* Hero form card — tighter padding */
+  .hero-form-card {
+    padding: var(--space-5);
+  }
+
+  /* Footer brand description — full width */
+  .footer-brand p {
+    max-width: 100%;
+  }
+}
