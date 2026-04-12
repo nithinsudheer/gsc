@@ -204,6 +204,36 @@
           <div class="form-success-msg">
             ✅ You're in! Check your inbox. We'll send your access details soon.
           </div>
+
+          <!-- OTP verification step — hidden until email is submitted -->
+          <div data-otp-step style="display:none;">
+            <div style="text-align:center;padding:8px 0 16px;">
+              <p style="font-weight:600;margin:0 0 6px;">Check your inbox</p>
+              <p data-otp-email-label style="color:var(--color-text-muted);font-size:14px;margin:0 0 20px;">
+                We sent a 6-digit code to your email
+              </p>
+              <input
+                data-otp-input
+                type="text"
+                inputmode="numeric"
+                maxlength="6"
+                pattern="[0-9]{6}"
+                placeholder="000000"
+                autocomplete="one-time-code"
+                style="width:100%;text-align:center;font-size:28px;letter-spacing:10px;padding:12px;border:2px solid var(--color-border);border-radius:var(--radius-md);outline:none;"
+              />
+              <span data-otp-error style="display:block;color:var(--color-error,#e53e3e);font-size:13px;margin-top:8px;min-height:18px;"></span>
+              <button type="submit" data-otp-submit-btn class="btn btn-accent btn-full btn-lg" style="margin-top:16px;">
+                Verify & Claim My Spot →
+              </button>
+              <p style="font-size:13px;color:var(--color-text-muted);margin-top:12px;">
+                Didn't receive it?
+                <button type="button" data-resend-btn style="background:none;border:none;color:var(--color-primary);cursor:pointer;font-size:13px;padding:0;text-decoration:underline;">
+                  Resend code
+                </button>
+              </p>
+            </div>
+          </div>
         </form>
 
       </div>
@@ -991,6 +1021,36 @@
             <div class="form-success-msg">
               ✅ You're in! Check your inbox. We'll send your access details soon.
             </div>
+
+            <!-- OTP verification step — hidden until email is submitted -->
+            <div data-otp-step style="display:none;">
+              <div style="text-align:center;padding:8px 0 16px;">
+                <p style="font-weight:600;margin:0 0 6px;">Check your inbox</p>
+                <p data-otp-email-label style="color:var(--color-text-muted);font-size:14px;margin:0 0 20px;">
+                  We sent a 6-digit code to your email
+                </p>
+                <input
+                  data-otp-input
+                  type="text"
+                  inputmode="numeric"
+                  maxlength="6"
+                  pattern="[0-9]{6}"
+                  placeholder="000000"
+                  autocomplete="one-time-code"
+                  style="width:100%;text-align:center;font-size:28px;letter-spacing:10px;padding:12px;border:2px solid var(--color-border);border-radius:var(--radius-md);outline:none;"
+                />
+                <span data-otp-error style="display:block;color:var(--color-error,#e53e3e);font-size:13px;margin-top:8px;min-height:18px;"></span>
+                <button type="submit" data-otp-submit-btn class="btn btn-accent btn-full btn-lg" style="margin-top:16px;">
+                  Verify & Claim My Spot →
+                </button>
+                <p style="font-size:13px;color:var(--color-text-muted);margin-top:12px;">
+                  Didn't receive it?
+                  <button type="button" data-resend-btn style="background:none;border:none;color:var(--color-primary);cursor:pointer;font-size:13px;padding:0;text-decoration:underline;">
+                    Resend code
+                  </button>
+                </p>
+              </div>
+            </div>
           </form>
         </div>
       </div>
@@ -1019,7 +1079,7 @@
           Instagram
         </a>
         <span class="launch-footer-sep" aria-hidden="true">·</span>
-        <a href="mailto:hello@getsetcollab.com">hello@getsetcollab.com</a>
+        <a href="/cdn-cgi/l/email-protection#9af2fff6f6f5dafdffeee9ffeef9f5f6f6fbf8b4f9f5f7"><span class="__cf_email__" data-cfemail="d3bbb6bfbfbc93b4b6a7a0b6a7b0bcbfbfb2b1fdb0bcbe">[email&#160;protected]</span></a>
       </div>
 
       <p class="launch-footer-copy">🇮🇳 Made in India &nbsp;·&nbsp; © 2026 GetSetCollab</p>
@@ -1033,13 +1093,12 @@
      MOBILE STICKY CTA BAR
      ============================================================ -->
 <div class="mobile-cta-bar" id="mobile-cta-bar" aria-hidden="true">
-  <a href="#join-form" class="btn btn-accent btn-full">Claim Your Spot — Join Free</a>
+  <a href="#join-form" class="btn btn-accent btn-full">Claim Your Founding Creator Spot</a>
 </div>
 
 
-
 <!-- Scripts -->
-<script src="/script.js"></script>
+<script data-cfasync="false" src="/script.js"></script>
 
 </body>
 </html>

@@ -81,8 +81,9 @@ var COMMUNITY_CONFIG = {
 (function () {
   'use strict';
 
-  /* ── API endpoint — Edge Function (no secrets in the browser) ── */
-  var SUBMIT_URL = 'https://ecbdqopvatonjietfzuv.supabase.co/functions/v1/submit-signup';
+  /* ── API endpoints ── */
+  var SEND_OTP_URL   = 'https://ecbdqopvatonjietfzuv.supabase.co/functions/v1/send-otp';
+  var VERIFY_OTP_URL = 'https://ecbdqopvatonjietfzuv.supabase.co/functions/v1/verify-otp';
 
   /* ── DOM Ready ── */
   document.addEventListener('DOMContentLoaded', function () {
@@ -455,49 +456,141 @@ var COMMUNITY_CONFIG = {
   }
 
   /* ============================================================
-     Form Handling — validation + Supabase submission
+     Form Handling — OTP verification flow
+     Step 1: Validate form → send OTP to email
+     Step 2: User enters OTP → verify + write signup to DB
      ============================================================ */
+
+  /* Stored form data between step 1 and step 2 */
+  var _pendingFormData = null;
+
   function initForms() {
     var forms = document.querySelectorAll('[data-form]');
     forms.forEach(function (form) {
-      /* Record load time — used to reject submissions under 2 seconds */
       form.setAttribute('data-loaded-at', Date.now());
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+
+        /* Step 2 — OTP form submit */
+        var otpInput = form.querySelector('[data-otp-input]');
+        if (otpInput && otpInput.closest('[data-otp-step]').style.display !== 'none') {
+          handleOTPVerify(form);
+          return;
+        }
+
+        /* Step 1 — main form submit */
         handleFormSubmit(form);
       });
     });
   }
 
+  /* ── Step 1: Validate form and send OTP ── */
   function handleFormSubmit(form) {
     if (!validateForm(form)) return;
 
-    /* Honeypot check — bots fill the hidden website field */
     var honeypot = form.querySelector('#hp-website');
     if (honeypot && honeypot.value) return;
 
-    /* Timestamp check — reject if submitted in under 2 seconds */
     var loadedAt = parseInt(form.getAttribute('data-loaded-at'));
     if (loadedAt && (Date.now() - loadedAt) < 2000) return;
 
     var btn          = form.querySelector('[data-submit-btn]');
     var originalText = btn ? btn.textContent : '';
-    var successMsg   = form.querySelector('.form-success-msg');
 
-    if (btn) {
-      btn.textContent = 'Submitting...';
-      btn.disabled    = true;
-    }
+    if (btn) { btn.textContent = 'Sending code...'; btn.disabled = true; }
 
     var data = collectFormData(form);
-
     var utms = getStoredUTMs();
     if (utms) { data = Object.assign(data, utms); }
-
-    /* Pass load time and honeypot to the server for its own checks */
     data.loaded_at = form.getAttribute('data-loaded-at') || '0';
-    data.timestamp = new Date().toISOString();
+
+    /* Store form data for step 2 */
+    _pendingFormData = data;
+
+    fetch(SEND_OTP_URL, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ email: data.email })
+    })
+    .then(function (res) { return res.json().then(function (body) { return { res: res, body: body }; }); })
+    .then(function (r) {
+      if (r.res.ok && r.body.ok) {
+        /* Show OTP step */
+        showOTPStep(form, data.email);
+        if (btn) { btn.textContent = originalText; btn.disabled = false; }
+      } else {
+        if (btn) { btn.textContent = originalText; btn.disabled = false; }
+        showFormError(form, r.body.error || 'Could not send verification code. Please try again.');
+      }
+    })
+    .catch(function () {
+      if (btn) { btn.textContent = originalText; btn.disabled = false; }
+      showFormError(form, 'Something went wrong. Please try again.');
+    });
+  }
+
+  /* ── Show OTP input step ── */
+  function showOTPStep(form, email) {
+    var formFields = form.querySelector('[data-form-fields]');
+    var otpStep    = form.querySelector('[data-otp-step]');
+
+    /* Update the email label */
+    var emailLabel = otpStep ? otpStep.querySelector('[data-otp-email-label]') : null;
+    if (emailLabel) {
+      emailLabel.innerHTML = 'We sent a 6-digit code to <strong>' + escapeHTML(email) + '</strong>';
+    }
+
+    if (formFields) formFields.style.display = 'none';
+    if (otpStep)    otpStep.style.display = 'block';
+
+    /* Wire up resend button */
+    var resendBtn = otpStep ? otpStep.querySelector('[data-resend-btn]') : null;
+    if (resendBtn && !resendBtn.dataset.wired) {
+      resendBtn.dataset.wired = '1';
+      resendBtn.addEventListener('click', function () {
+        resendBtn.textContent = 'Sending...';
+        resendBtn.disabled = true;
+        fetch(SEND_OTP_URL, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ email: email })
+        })
+        .then(function () {
+          resendBtn.textContent = 'Sent!';
+          setTimeout(function () {
+            resendBtn.textContent = 'Resend code';
+            resendBtn.disabled = false;
+          }, 3000);
+        })
+        .catch(function () {
+          resendBtn.textContent = 'Resend code';
+          resendBtn.disabled = false;
+        });
+      });
+    }
+
+    /* Focus the OTP input */
+    var otpInput = otpStep ? otpStep.querySelector('[data-otp-input]') : null;
+    if (otpInput) setTimeout(function () { otpInput.focus(); }, 100);
+  }
+
+  /* ── Step 2: Verify OTP and submit signup ── */
+  function handleOTPVerify(form) {
+    var otpInput  = form.querySelector('[data-otp-input]');
+    var otpError  = form.querySelector('[data-otp-error]');
+    var submitBtn = form.querySelector('[data-otp-submit-btn]');
+    var otp       = otpInput ? otpInput.value.trim() : '';
+
+    if (!otp || !/^\d{6}$/.test(otp)) {
+      if (otpError) otpError.textContent = 'Please enter the 6-digit code.';
+      return;
+    }
+
+    if (otpError) otpError.textContent = '';
+    if (submitBtn) { submitBtn.textContent = 'Verifying...'; submitBtn.disabled = true; }
+
+    var data = Object.assign({}, _pendingFormData, { otp: otp });
 
     if (typeof gtag !== 'undefined') {
       gtag('event', 'form_submit', {
@@ -507,9 +600,17 @@ var COMMUNITY_CONFIG = {
       });
     }
 
-    submitToEdgeFunction(data, function (success) {
-      if (success) {
-        /* Increment cached counter by 1 for this session */
+    fetch(VERIFY_OTP_URL, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(data)
+    })
+    .then(function (res) { return res.json().then(function (body) { return { res: res, body: body }; }); })
+    .then(function (r) {
+      if (r.res.ok && r.body.ok) {
+        _pendingFormData = null;
+
+        /* Increment cached counter */
         try {
           var cached = sessionStorage.getItem('gsc_counter_cache');
           if (cached) {
@@ -522,43 +623,40 @@ var COMMUNITY_CONFIG = {
         } catch (e) {}
 
         var redirect = form.getAttribute('data-redirect');
-        if (redirect) {
+        if (redirect && redirect.startsWith('/')) {
           window.location.href = redirect + buildUTMQueryString(data);
         } else {
-          var formFields = form.querySelector('[data-form-fields]');
-          if (formFields) formFields.style.display = 'none';
+          var otpStep    = form.querySelector('[data-otp-step]');
+          var successMsg = form.querySelector('.form-success-msg');
+          if (otpStep)    otpStep.style.display = 'none';
           if (successMsg) successMsg.classList.add('visible');
         }
       } else {
-        if (btn) {
-          btn.textContent = originalText;
-          btn.disabled    = false;
-        }
-        alert('Something went wrong. Please try again or email us at hello@getsetcollab.com');
+        if (otpError)  otpError.textContent  = r.body.error || 'Verification failed. Please try again.';
+        if (submitBtn) { submitBtn.textContent = 'Verify & Claim My Spot →'; submitBtn.disabled = false; }
       }
+    })
+    .catch(function () {
+      if (otpError)  otpError.textContent  = 'Something went wrong. Please try again.';
+      if (submitBtn) { submitBtn.textContent = 'Verify & Claim My Spot →'; submitBtn.disabled = false; }
     });
   }
 
-  function submitToEdgeFunction(data, callback) {
-    /* Send all collected fields — the server whitelists what it accepts */
-    fetch(SUBMIT_URL, {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify(data)
-    })
-    .then(function (res) {
-      return res.json().then(function (body) {
-        if (res.ok && body.ok) {
-          callback(true);
-        } else {
-          console.error('Submission error:', body.error || res.status);
-          callback(false);
-        }
-      });
-    })
-    .catch(function (err) {
-      console.error('Submission error:', err);
-      callback(false);
+  function showFormError(form, message) {
+    var existing = form.querySelector('[data-form-general-error]');
+    if (!existing) {
+      existing = document.createElement('p');
+      existing.setAttribute('data-form-general-error', '');
+      existing.style.cssText = 'color:var(--color-error,#e53e3e);font-size:14px;margin:8px 0 0;';
+      var btn = form.querySelector('[data-submit-btn]');
+      if (btn) btn.parentNode.insertBefore(existing, btn.nextSibling);
+    }
+    existing.textContent = message;
+  }
+
+  function escapeHTML(str) {
+    return str.replace(/[&<>"']/g, function (c) {
+      return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
     });
   }
 
@@ -736,18 +834,21 @@ var COMMUNITY_CONFIG = {
     document.head.appendChild(style);
   }
 
+  /* ── Niche accordion toggle (mobile) ── */
+  function toggleNiches() {
+    var hiddenCards = document.querySelectorAll('.niche-card--hidden');
+    var btn         = document.getElementById('niche-toggle-btn');
+    var isExpanded  = btn.getAttribute('data-expanded') === 'true';
+
+    hiddenCards.forEach(function (card) {
+      card.classList.toggle('visible', !isExpanded);
+    });
+
+    btn.setAttribute('data-expanded', !isExpanded);
+    btn.textContent = isExpanded ? 'See all 6 niches ▾' : 'Show less ▴';
+  }
+
+  /* Expose only what the HTML needs (onclick="toggleNiches()") */
+  window.toggleNiches = toggleNiches;
+
 })();
-
-/* ── Niche accordion toggle (mobile) ── */
-function toggleNiches() {
-  var hiddenCards = document.querySelectorAll('.niche-card--hidden');
-  var btn         = document.getElementById('niche-toggle-btn');
-  var isExpanded  = btn.getAttribute('data-expanded') === 'true';
-
-  hiddenCards.forEach(function (card) {
-    card.classList.toggle('visible', !isExpanded);
-  });
-
-  btn.setAttribute('data-expanded', !isExpanded);
-  btn.textContent = isExpanded ? 'See all 6 niches ▾' : 'Show less ▴';
-}
