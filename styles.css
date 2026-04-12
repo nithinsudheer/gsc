@@ -1272,6 +1272,47 @@ h4, .text-h4 {
   padding: var(--space-10);
 }
 
+/* ── Form readability overrides inside dark CTA section ── */
+.cta-form-card .hero-form-title,
+.cta-form-card .form-label {
+  color: #FFFFFF;
+}
+
+.cta-form-card .hero-form-subtitle,
+.cta-form-card .form-microcopy {
+  color: var(--neutral-400);
+}
+
+.cta-form-card .form-label-optional {
+  color: var(--neutral-500);
+}
+
+.cta-form-card .form-input,
+.cta-form-card .form-select,
+.cta-form-card .form-textarea {
+  background-color: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.18);
+  color: #FFFFFF;
+}
+
+.cta-form-card .form-input::placeholder,
+.cta-form-card .form-textarea::placeholder {
+  color: var(--neutral-500);
+}
+
+.cta-form-card .form-select option {
+  background-color: var(--neutral-800);
+  color: #FFFFFF;
+}
+
+.cta-form-card .phone-prefix {
+  color: var(--neutral-300);
+}
+
+.cta-form-card [data-otp-step] p {
+  color: var(--neutral-300);
+}
+
 /* ============================================================
    Stats Row
    ============================================================ */
