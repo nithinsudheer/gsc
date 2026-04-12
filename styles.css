@@ -1833,9 +1833,8 @@ h4, .text-h4 {
     max-width: 100%;
   }
 
-  /* Feature cards — centered single column on mobile */
+  /* Feature cards — keep 2 columns, widen gap */
   .hero-features-grid {
-    grid-template-columns: 1fr;
     width: 100%;
     gap: 18px;
   }
@@ -3372,7 +3371,6 @@ h4, .text-h4 {
   }
 
   .hero-features-grid {
-    grid-template-columns: 1fr;
     gap: var(--space-2);
   }
 
@@ -3486,6 +3484,10 @@ h4, .text-h4 {
 
   .countdown-grid {
     gap: var(--space-1);
+  }
+
+  .hero-features-grid {
+    grid-template-columns: 1fr;
   }
 }
 
