@@ -1727,10 +1727,20 @@ h4, .text-h4 {
     max-width: 420px;
     margin-left: auto;
     margin-right: auto;
+    gap: 18px;
   }
 
   .hero-features {
     align-items: center;
+    margin-top: 40px;
+  }
+
+  .hero-feature-title {
+    font-size: 15px;
+  }
+
+  .hero-feature-desc {
+    font-size: 14px;
   }
 
   /* Ensure stat values don't overflow */
