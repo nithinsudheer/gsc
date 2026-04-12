@@ -1598,7 +1598,8 @@ h4, .text-h4 {
   }
 
   .hero-form-card {
-    max-width: 560px;
+    max-width: 100%;
+    width: 100%;
   }
 
   .steps-grid {
@@ -1844,8 +1845,27 @@ h4, .text-h4 {
     margin-top: 40px;
   }
 
+  .hero-feature-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-feature-card > div:not(.hero-feature-icon) {
+    text-align: center;
+    width: 100%;
+  }
+
+  .hero-feature-card .hero-feature-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .hero-feature-title {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .hero-feature-desc {
