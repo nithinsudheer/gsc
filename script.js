@@ -81,9 +81,8 @@ var COMMUNITY_CONFIG = {
 (function () {
   'use strict';
 
-  /* ── Supabase config ── */
-  var SUPABASE_URL = 'https://ecbdqopvatonjietfzuv.supabase.co';
-  var SUPABASE_KEY = 'sb_publishable_N-N80r82b9DzhRAlH3b29w_EyLUFvff';
+  /* ── API endpoint — Edge Function (no secrets in the browser) ── */
+  var SUBMIT_URL = 'https://ecbdqopvatonjietfzuv.supabase.co/functions/v1/submit-signup';
 
   /* ── DOM Ready ── */
   document.addEventListener('DOMContentLoaded', function () {
@@ -221,17 +220,11 @@ var COMMUNITY_CONFIG = {
     }
 
     function fetchFromServer(callback) {
-      var url = SUPABASE_URL + '/rest/v1/counts?id=eq.creators&select=count';
-      fetch(url, {
-        method: 'GET',
-        headers: {
-          'apikey':        SUPABASE_KEY,
-          'Authorization': 'Bearer ' + SUPABASE_KEY
-        }
-      })
+      var url = 'https://ecbdqopvatonjietfzuv.supabase.co/functions/v1/get-count';
+      fetch(url)
       .then(function (res) { return res.json(); })
       .then(function (data) {
-        var count = data && data[0] && data[0].count;
+        var count = data && data.count;
         if (count) {
           try {
             sessionStorage.setItem('gsc_counter_cache', JSON.stringify({ count: count, ts: Date.now() }));
@@ -502,6 +495,8 @@ var COMMUNITY_CONFIG = {
     var utms = getStoredUTMs();
     if (utms) { data = Object.assign(data, utms); }
 
+    /* Pass load time and honeypot to the server for its own checks */
+    data.loaded_at = form.getAttribute('data-loaded-at') || '0';
     data.timestamp = new Date().toISOString();
 
     if (typeof gtag !== 'undefined') {
@@ -512,7 +507,7 @@ var COMMUNITY_CONFIG = {
       });
     }
 
-    submitToSupabase(data, function (success) {
+    submitToEdgeFunction(data, function (success) {
       if (success) {
         /* Increment cached counter by 1 for this session */
         try {
@@ -544,67 +539,25 @@ var COMMUNITY_CONFIG = {
     });
   }
 
-  function submitToSupabase(data, callback) {
-    /* Determine table and allowed fields based on role */
-    var isBrand = data.role === 'brand';
-    var table   = isBrand ? 'signups_brands' : 'signups_creators';
-
-    var payload;
-    if (isBrand) {
-      payload = {
-        name:         data.name         || null,
-        email:        data.email        || null,
-        phone:        data.phone        || null,
-        company:      data.company      || null,
-        budget:       data.budget       || null,
-        utm_source:   data.utm_source   || null,
-        utm_medium:   data.utm_medium   || null,
-        utm_campaign: data.utm_campaign || null,
-        utm_content:  data.utm_content  || null
-      };
-    } else {
-      payload = {
-        name:         data.name         || null,
-        email:        data.email        || null,
-        phone:        data.phone        || null,
-        platform:     data.platform     || null,
-        pain:         data.pain         || null,
-        tier:         data.tier         || null,
-        source:       data.source       || null,
-        utm_source:   data.utm_source   || null,
-        utm_medium:   data.utm_medium   || null,
-        utm_campaign: data.utm_campaign || null,
-        utm_content:  data.utm_content  || null
-      };
-    }
-
-    fetch(SUPABASE_URL + '/rest/v1/' + table, {
+  function submitToEdgeFunction(data, callback) {
+    /* Send all collected fields — the server whitelists what it accepts */
+    fetch(SUBMIT_URL, {
       method:  'POST',
-      headers: {
-        'apikey':        SUPABASE_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_KEY,
-        'Content-Type':  'application/json',
-        'Prefer':        'return=minimal'
-      },
-      body: JSON.stringify(payload)
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(data)
     })
     .then(function (res) {
-      if (res.ok || res.status === 201) {
-        callback(true);
-      } else {
-        return res.json().then(function (err) {
-          /* Duplicate email — treat as success so user isn't confused */
-          if (err && err.code === '23505') {
-            callback(true);
-          } else {
-            console.error('Supabase error:', err);
-            callback(false);
-          }
-        });
-      }
+      return res.json().then(function (body) {
+        if (res.ok && body.ok) {
+          callback(true);
+        } else {
+          console.error('Submission error:', body.error || res.status);
+          callback(false);
+        }
+      });
     })
     .catch(function (err) {
-      console.error('Supabase submission error:', err);
+      console.error('Submission error:', err);
       callback(false);
     });
   }
