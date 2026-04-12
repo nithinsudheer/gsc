@@ -281,6 +281,10 @@ var COMMUNITY_CONFIG = {
         if (formSubtitleEl) {
           formSubtitleEl.textContent = 'The founding community is now full — launch is June 10';
         }
+        var formSpotStatusBottomEl = document.getElementById('form-spot-status-bottom');
+        if (formSpotStatusBottomEl) {
+          formSpotStatusBottomEl.textContent = 'The founding community is now full — launch is June 10';
+        }
         /* Update form button */
         var submitBtn = document.querySelector('[data-submit-btn]');
         if (submitBtn) {
@@ -314,6 +318,12 @@ var COMMUNITY_CONFIG = {
         var formSpotStatusEl = document.getElementById('form-spot-status');
         if (formSpotStatusEl) {
           formSpotStatusEl.innerHTML = 'Only <strong class="spot-count">' + spotsRemaining.toLocaleString('en-IN') + '</strong> of ' + currentTier.max.toLocaleString('en-IN') + ' ' + currentTier.name + ' spots remaining';
+        }
+
+        /* Sync bottom form spot count */
+        var formSpotStatusBottomEl = document.getElementById('form-spot-status-bottom');
+        if (formSpotStatusBottomEl) {
+          formSpotStatusBottomEl.innerHTML = 'Only <strong class="spot-count">' + spotsRemaining.toLocaleString('en-IN') + '</strong> of ' + currentTier.max.toLocaleString('en-IN') + ' ' + currentTier.name + ' spots remaining';
         }
 
         /* Update hidden tier field */

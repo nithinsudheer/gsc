@@ -786,7 +786,6 @@ h4, .text-h4 {
   font-size: 14px;
   font-weight: 500;
   color: var(--neutral-600);
-  white-space: nowrap;
 }
 
 .trust-item-icon {
@@ -1275,6 +1274,49 @@ h4, .text-h4 {
   padding: var(--space-10);
 }
 
+/* ── Form readability overrides inside dark CTA section ── */
+.cta-form-card .hero-form-title,
+.cta-form-card .form-label {
+  color: #FFFFFF;
+}
+
+.cta-form-card .hero-form-subtitle,
+.cta-form-card .form-microcopy {
+  color: var(--neutral-400);
+}
+
+.cta-form-card .form-label-optional {
+  color: var(--neutral-500);
+}
+
+.cta-form-card .form-input,
+.cta-form-card .form-select,
+.cta-form-card .form-textarea {
+  background-color: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.18);
+  color: #FFFFFF;
+}
+
+.cta-form-card .form-input::placeholder,
+.cta-form-card .form-textarea::placeholder {
+  color: var(--neutral-500);
+}
+
+.cta-form-card .form-select option {
+  background-color: var(--neutral-800);
+  color: #FFFFFF;
+}
+
+.cta-form-card .phone-prefix {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.18);
+  color: var(--neutral-300);
+}
+
+.cta-form-card [data-otp-step] p {
+  color: var(--neutral-300);
+}
+
 /* ============================================================
    Stats Row
    ============================================================ */
@@ -1530,7 +1572,7 @@ h4, .text-h4 {
 /* ============================================================
    Responsive — Tablet (≤ 1024px)
    ============================================================ */
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   :root { --section-py: 64px; }
 
   .navbar-links {
@@ -1574,10 +1616,14 @@ h4, .text-h4 {
   .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .testimonials-grid { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
-  .two-col { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; justify-items: center; }
 
   .two-col-content {
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 600px;
   }
 
   .two-col-content .btn {
@@ -1593,6 +1639,59 @@ h4, .text-h4 {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-10);
+  }
+
+  /* Hero — center all content when stacked */
+  .hero-content {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-actions { justify-content: center; }
+  .hero-subheadline { text-align: center; }
+
+  .hero-content > div[style*="display:flex"] {
+    justify-content: center;
+  }
+
+  .hero-content-top,
+  .hero-content-bottom {
+    text-align: center;
+  }
+
+  .creator-count-pill {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-form-card {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-form-header {
+    text-align: center;
+  }
+
+  .hero-form-subtitle {
+    text-align: center;
+    justify-content: center;
+  }
+
+  #form-spot-status {
+    display: block;
+    text-align: center;
+  }
+
+  .hero-feature-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-feature-card .hero-feature-icon {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -1673,10 +1772,14 @@ h4, .text-h4 {
   .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
   .testimonials-grid { grid-template-columns: 1fr; max-width: 100%; }
   .stats-row { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
-  .two-col { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; justify-items: center; }
 
   .two-col-content {
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 600px;
   }
 
   .two-col-content .btn {
@@ -1964,6 +2067,12 @@ h4, .text-h4 {
 
 @media (max-width: 768px) {
   .features-grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .features-grid--4 {
     grid-template-columns: 1fr;
   }
 }
@@ -2062,6 +2171,12 @@ h4, .text-h4 {
   margin-top: var(--space-8);
 }
 
+@media (max-width: 1024px) {
+  .niche-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .niche-accordion-toggle {
   display: none;
   text-align: center;
@@ -2087,6 +2202,14 @@ h4, .text-h4 {
 }
 
 /* ── Founder section ── */
+
+/* Profile stats grid (3-col inside profile mock card) */
+.profile-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
 .founder-card {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -2272,6 +2395,12 @@ h4, .text-h4 {
   gap: var(--space-4);
 }
 
+@media (max-width: 1024px) {
+  .app-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .app-stat-card {
   background-color: var(--color-background);
   border: 1px solid var(--neutral-300);
@@ -2368,11 +2497,20 @@ h4, .text-h4 {
     border-left: none;
     border-right: none;
   }
+
+  .profile-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
   .app-stats-row {
     grid-template-columns: 1fr;
+  }
+
+  .profile-stats-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
   }
 }
 
