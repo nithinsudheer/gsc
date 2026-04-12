@@ -1644,6 +1644,11 @@ h4, .text-h4 {
     text-align: center;
   }
 
+  .hero-feature-card .hero-feature-icon {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   /* Center subheadline */
   .hero-subheadline {
     text-align: center;
