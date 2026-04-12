@@ -511,7 +511,7 @@ var COMMUNITY_CONFIG = {
     fetch(SEND_OTP_URL, {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ email: data.email })
+      body:    JSON.stringify(data)  // full form data
     })
     .then(function (res) { return res.json().then(function (body) { return { res: res, body: body }; }); })
     .then(function (r) {
@@ -554,7 +554,7 @@ var COMMUNITY_CONFIG = {
         fetch(SEND_OTP_URL, {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify({ email: email })
+          body:    JSON.stringify(_pendingFormData)  // full form data
         })
         .then(function () {
           resendBtn.textContent = 'Sent!';
@@ -595,7 +595,7 @@ var COMMUNITY_CONFIG = {
     if (typeof gtag !== 'undefined') {
       gtag('event', 'form_submit', {
         event_category: 'engagement',
-        event_label:    data.role || 'unknown',
+        event_label:    _pendingFormData.role || 'unknown',
         page_location:  window.location.href
       });
     }
@@ -603,7 +603,7 @@ var COMMUNITY_CONFIG = {
     fetch(VERIFY_OTP_URL, {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify(data)
+      body:    JSON.stringify({ email: _pendingFormData.email, otp: otp })
     })
     .then(function (res) { return res.json().then(function (body) { return { res: res, body: body }; }); })
     .then(function (r) {
