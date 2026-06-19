@@ -9,10 +9,10 @@
    updates automatically (countdown, badge, chip, title, meta).
    ────────────────────────────────────────────────────────────── */
 var LAUNCH_DATE = {
-  iso:      '2026-06-10T10:00:00+05:30',  /* ← change date here */
-  display:  'June 10, 2026',               /* shown in badge */
-  datetime: 'June 10, 2026 • 10:00 AM IST', /* countdown section row 3 */
-  title:    'Launching June 10, 2026'      /* page <title> & meta */
+  iso:      '2026-08-10T10:00:00+05:30',  /* ← change date here */
+  display:  'August 10, 2026',             /* shown in badge */
+  datetime: 'August 10, 2026 • 10:00 AM IST', /* countdown section row 3 */
+  title:    'Launching August 10, 2026'    /* page <title> & meta */
 };
 
 /* ──────────────────────────────────────────────────────────────
@@ -72,8 +72,8 @@ var COMMUNITY_CONFIG = {
   closedAt: 5000,
   closedCards: {
     badge:  { title: 'Join the Launch-Day List',        desc: 'The founding community is full. Join the launch-day notification list to be first when we go live.' },
-    fee:    { title: 'Platform Launches June 10, 2026', desc: 'GetSetCollab goes live on June 10. Join the list and you\'ll be notified the moment we\'re live.' },
-    search: { title: 'Full Access at Launch',           desc: 'Everyone on the launch-day list gets full platform access the moment we go live on June 10.' },
+    fee:    { title: 'Platform Launches August 10, 2026', desc: 'GetSetCollab goes live on August 10. Join the list and you\'ll be notified the moment we\'re live.' },
+    search: { title: 'Full Access at Launch',           desc: 'Everyone on the launch-day list gets full platform access the moment we go live on August 10.' },
     access: { title: 'No Credit Card Required',         desc: 'Free to join. No subscription. No hidden fees. Sign up and we\'ll reach out before launch day.' }
   }
 };
@@ -279,11 +279,11 @@ var COMMUNITY_CONFIG = {
           tierTextEl.innerHTML = '<strong>Founding community is full</strong> · Join the launch-day list';
         }
         if (formSubtitleEl) {
-          formSubtitleEl.textContent = 'The founding community is now full — launch is June 10';
+          formSubtitleEl.textContent = 'The founding community is now full — launch is August 10';
         }
         var formSpotStatusBottomEl = document.getElementById('form-spot-status-bottom');
         if (formSpotStatusBottomEl) {
-          formSpotStatusBottomEl.textContent = 'The founding community is now full — launch is June 10';
+          formSpotStatusBottomEl.textContent = 'The founding community is now full — launch is August 10';
         }
         /* Update form button */
         var submitBtn = document.querySelector('[data-submit-btn]');
